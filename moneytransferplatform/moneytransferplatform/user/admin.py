@@ -7,5 +7,11 @@ class ProfileAdmin(admin.ModelAdmin):
 
 class UserTransactionAdmin(admin.ModelAdmin):
 	list_display = [
-		'id', 'transactionId', 'userProfile', 'amount', 'isSuccessful'
+		'id',
+		'transactionId',
+		'sender',
+		'reciever',
+		'amount',
+		'isSuccessful',
+		'timestamp'
 	]

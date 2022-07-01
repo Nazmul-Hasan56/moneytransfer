@@ -18,6 +18,10 @@ class UserTransaction(models.Model):
 	id = models.BigAutoField(primary_key=True)
 	transactionId = \
 		models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
-	userProfile = models.ForeignKey(Profile, on_delete=models.PROTECT)
+	sender = models.ForeignKey(Profile, on_delete=models.PROTECT)
+	reciever = models.ForeignKey(
+		Profile, on_delete=models.PROTECT, related_name='reciever_profile'
+	)
 	amount = models.DecimalField(max_digits=12, decimal_places=2)
 	isSuccessful = models.BooleanField(default=False)
+	timestamp = models.DateTimeField(auto_now_add=True)
