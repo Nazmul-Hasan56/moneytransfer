@@ -1,3 +1,7 @@
 from django.urls import path
 
-urlpatterns = []
+from moneytransferplatform.api import views as userView
+
+urlpatterns = [
+	path('users', userView.Users.as_view(), name='signup'),
+]

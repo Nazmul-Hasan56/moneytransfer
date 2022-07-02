@@ -1,0 +1,5 @@
+ERROR_PROPERTY = "error"
+IS_VALID_PROPERTY = "isValid"
+ERROR_TYPE_PROPERTY = "errorType"
+FIELD_PROPERTY = "field"
+ERROR_MESSAGE_PROPERTY = "errorMessage"
