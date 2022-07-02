@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import transaction
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 
 from library.apiresponse import ApiResponse
 from library.error import errorutil
@@ -13,6 +14,7 @@ def signup(signupParam):
 		userName = signupParam['name'].lower()
 		password = signupParam['password']
 		user = User.objects.create_user(userName, password)
+		token, isCreated = Token.objects.get_or_create(user=user)
 		profile = Profile(
 			name=userName,
 			mobileNumber=signupParam['mobileNumber'],
