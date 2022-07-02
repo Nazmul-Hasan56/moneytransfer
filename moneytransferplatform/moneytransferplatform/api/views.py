@@ -6,7 +6,7 @@ from rest_framework import status
 
 from library.error import errorutil
 from moneytransferplatform.user.controller import signupcontroller, \
-	transactioncontroller
+	transactioncontroller, sendmoneycontroller
 
 class Users(APIView):
 	permission_classes = (AllowAny,)
@@ -28,6 +28,16 @@ class Transactions(APIView):
 			apiResponse = transactioncontroller.getUserTransactions(
 				request, userId
 			)
+		except Exception as exception:
+			apiResponse = errorutil.get500Error(exception)
+		return JsonResponse(apiResponse.response, status=apiResponse.status)
+
+	def post(self, request, userId, format=None):
+		apiResponse = None
+		try:
+			apiResponse = sendmoneycontroller.sendMoney(request, userId)
+		except ParseError as exception:
+			apiResponse = errorutil.getJSONParseError(exception)
 		except Exception as exception:
 			apiResponse = errorutil.get500Error(exception)
 		return JsonResponse(apiResponse.response, status=apiResponse.status)
