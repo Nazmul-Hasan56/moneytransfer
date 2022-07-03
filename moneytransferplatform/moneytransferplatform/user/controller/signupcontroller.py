@@ -13,7 +13,7 @@ def signup(signupParam):
 	with transaction.atomic():
 		userName = signupParam['name'].lower()
 		password = signupParam['password']
-		user = User.objects.create_user(userName, password)
+		user = User.objects.create_user(userName, ' ', password)
 		token, isCreated = Token.objects.get_or_create(user=user)
 		profile = Profile(
 			name=userName,
