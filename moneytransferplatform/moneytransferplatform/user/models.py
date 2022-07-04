@@ -25,3 +25,12 @@ class UserTransaction(models.Model):
 	amount = models.DecimalField(max_digits=12, decimal_places=2)
 	isSuccessful = models.BooleanField(default=False)
 	timestamp = models.DateTimeField(auto_now_add=True)
+
+class ScheduledUser(models.Model):
+	id = models.BigAutoField(primary_key=True)
+	sender = models.ForeignKey(Profile, on_delete=models.PROTECT)
+	reciever = models.ForeignKey(
+		Profile, on_delete=models.PROTECT, related_name='schedule_reciever_profile'
+	)
+	amount = models.DecimalField(max_digits=12, decimal_places=2)
+	transferSchedule = models.DateTimeField()

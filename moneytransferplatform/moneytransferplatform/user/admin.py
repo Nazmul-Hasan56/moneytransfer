@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from moneytransferplatform.user.models import Profile, UserTransaction
+from moneytransferplatform.user.models import Profile, UserTransaction, \
+	ScheduledUser
 
 class ProfileAdmin(admin.ModelAdmin):
 	list_display = [
@@ -18,5 +19,11 @@ class UserTransactionAdmin(admin.ModelAdmin):
 		'timestamp'
 	]
 
+class ScheduledUserAdmin(admin.ModelAdmin):
+	list_display = [
+		'id', 'sender', 'reciever', 'amount', 'transferSchedule'
+	]
+
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(UserTransaction, UserTransactionAdmin)
+admin.site.register(ScheduledUser, ScheduledUserAdmin)
