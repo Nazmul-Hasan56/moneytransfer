@@ -41,6 +41,13 @@ INSTALLED_APPS = [
 	'moneytransferplatform.user',
 	'rest_framework',
 	'rest_framework.authtoken',
+	'django_crontab',
+]
+
+CRONJOBS = [
+    (
+		'*/5 * * * *', 'moneytransferplatform.cron.scheduleTransaction'
+	)
 ]
 
 MIDDLEWARE = [
