@@ -9,4 +9,9 @@ urlpatterns = [
 		userView.Transactions.as_view(),
 		name='userTransactions'
 	),
+	path(
+		'users/<uuid:userId>/schedulers',
+		userView.ScheduleUser.as_view(),
+		name='addScheduleUser'
+	),
 ]

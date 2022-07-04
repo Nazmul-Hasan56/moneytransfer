@@ -33,4 +33,3 @@ class ScheduledUser(models.Model):
 		Profile, on_delete=models.PROTECT, related_name='schedule_reciever_profile'
 	)
 	amount = models.DecimalField(max_digits=12, decimal_places=2)
-	transferSchedule = models.DateTimeField()

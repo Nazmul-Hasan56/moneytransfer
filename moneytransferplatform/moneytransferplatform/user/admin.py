@@ -20,9 +20,7 @@ class UserTransactionAdmin(admin.ModelAdmin):
 	]
 
 class ScheduledUserAdmin(admin.ModelAdmin):
-	list_display = [
-		'id', 'sender', 'reciever', 'amount', 'transferSchedule'
-	]
+	list_display = ['id', 'sender', 'reciever', 'amount']
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(UserTransaction, UserTransactionAdmin)
